@@ -7,19 +7,24 @@ import java.util.HashMap;
 import java.util.List;
 @Repository
 public class StudentRepository {
-    public StudentRepository(){
 
+    HashMap<String,Student> studentHashMap;
+    HashMap<String,Teacher> teacherHashMap;
+    HashMap<String, List<String>> teacherStudentList;
+
+
+    public StudentRepository() {
+        studentHashMap = new HashMap<>();
+        teacherHashMap = new HashMap<>();
+        teacherStudentList = new HashMap<>();
     }
-    HashMap<String,Student> studentHashMap = new HashMap<>();
-    HashMap<String,Teacher> teacherHashMap = new HashMap<>();
-    HashMap<String, List<String>> teacherStudentList = new HashMap<>();
     public void addStudent(Student student){
         studentHashMap.put(student.getName(), student);
     }
     public void addTeacher(Teacher teacher){
         teacherHashMap.put(teacher.getName(), teacher);
     }
-    public void addStudentTeacherPair(String teacherName,String studentName){
+    public void addStudentTeacherPair(String studentName,String teacherName){
         List<String> studentList = new ArrayList<>();
         if(teacherStudentList.containsKey(teacherName)){
             studentList = teacherStudentList.get(teacherName);
